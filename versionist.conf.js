@@ -1,8 +1,8 @@
 const plugins = require('versionist-plugins');
 
 module.exports = {
-  updateVersion: [plugins.git.commit, plugins.git.tag, plugins.git.push],
-  getGitReferenceFromVersion: version => `v${version}`,
+  updateVersion: ['npm', plugins.git.push],
+  getGitReferenceFromVersion: 'v-prefix',
   template: [
     '## v{{version}} - {{moment date "Y-MM-DD"}}',
     '',
