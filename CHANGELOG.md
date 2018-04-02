@@ -1,3 +1,9 @@
+## v0.0.4 - 2018-04-02
+
+- Updates versionist config
+- Updates versionist config
+- Updates versionist config
+
 ## v0.0.3 - 2018-04-02
 
 * Renames logo
