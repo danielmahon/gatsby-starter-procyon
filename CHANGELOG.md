@@ -1,3 +1,7 @@
+## v0.0.3 - 2018-04-02
+
+- Renames logo
+
 ## v0.0.2 - 2018-04-02
 
 - Adds CHANGELOG
