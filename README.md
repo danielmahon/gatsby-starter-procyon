@@ -17,16 +17,16 @@ npm install --global gatsby-cli
 And run from your CLI:
 
 ```sh
-gatsby new gatsby-example-site
+gatsby new gatsby-blog https://github.com/danielmahon/gatsby-starter-procyon
 ```
 
 Then you can run it by:
 
 ```sh
-cd gatsby-example-site
+cd gatsby-starter-procyon
 npm run develop
 ```
 
 ## Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danielmahon/gatsby-starter-procyon)
