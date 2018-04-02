@@ -24,7 +24,7 @@ Then you can run it by:
 
 ```sh
 cd gatsby-starter-procyon
-npm run develop
+npm start
 ```
 
 ## Deploy
