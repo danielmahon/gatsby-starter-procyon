@@ -1,5 +1,6 @@
 ## v0.0.2 - 2018-04-02
 
+- Adds CHANGELOG
 - Adds favicon
 - Updates github info
 - Updates README
