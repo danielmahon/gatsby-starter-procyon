@@ -1,4 +1,4 @@
-![gatsby-starter-procyon](https://github.com/danielmahon/gatsby-starter-procyon/raw/master/static/procyon-logo.png)
+![gatsby-starter-procyon](https://github.com/danielmahon/gatsby-starter-procyon/raw/master/static/logo.png)
 
 # gatsby-starter-procyon
 
