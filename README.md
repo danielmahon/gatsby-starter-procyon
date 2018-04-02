@@ -17,7 +17,7 @@ npm install --global gatsby-cli
 And run from your CLI:
 
 ```sh
-gatsby new gatsby-blog https://github.com/danielmahon/gatsby-starter-procyon
+gatsby new gatsby-starter-procyon https://github.com/danielmahon/gatsby-starter-procyon
 ```
 
 Then you can run it by:
