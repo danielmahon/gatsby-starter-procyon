@@ -1,32 +1,52 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
+import logoImage from '../../../static/logo.png';
 
-const Wrapper = styled.div`
-  background: rebeccapurple;
-  margin-bottom: 1.45rem;
+const HeaderWrapper = styled.nav`
+  background: ${({ theme }) => theme.colors.background};
+  border-bottom: ${({ theme }) => `1px solid ${theme.colors.backgroundDarker}`};
 `;
 const HeaderContent = styled.div`
   margin: 0 auto;
   max-width: 960px;
-  padding: 1.45rem 1.0875rem;
+  text-align: center;
+`;
+const Navigation = styled.div`
+  padding: 1rem 0;
 `;
 const Title = styled.h1`
+  padding: 2rem;
   margin: 0;
 `;
 const TitleLink = styled(Link)`
-  color: white;
+  color: gray;
+  font-size: 0.875em;
+  display: inline-block;
   text-decoration: none;
+  padding: 0.5rem 1rem;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.backgroundDarker};
+  }
 `;
 
 const Header = ({ data: { site } }) => (
-  <Wrapper>
+  <HeaderWrapper>
     <HeaderContent>
       <Title>
-        <TitleLink to="/">{site.siteMetadata.title}</TitleLink>
+        <Link to="/">
+          <img src={logoImage} alt={site.siteMetadata.title} />
+        </Link>
       </Title>
+      <Navigation>
+        <TitleLink to="/">Home</TitleLink>
+        <TitleLink to="/services">Services</TitleLink>
+        <TitleLink to="/about">About</TitleLink>
+        <TitleLink to="/blog">Blog</TitleLink>
+        <TitleLink to="/contact">Contact</TitleLink>
+      </Navigation>
     </HeaderContent>
-  </Wrapper>
+  </HeaderWrapper>
 );
 
 export default Header;

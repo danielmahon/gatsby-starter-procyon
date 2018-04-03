@@ -2,15 +2,19 @@ import React from 'react';
 import Markdown from 'react-markdown';
 import styled from 'styled-components';
 
+const Article = styled.article`
+  margin: 2rem 0;
+`;
+
 const Placeholder = styled.div`
   height: 366px;
   background-color: #eee;
 `;
 
 export default ({ data }) => {
-  const post = data.posts
+  const post = data.posts;
   return (
-    <article>
+    <Article>
       <h1>{post.title}</h1>
       <Placeholder>
         <img
@@ -25,8 +29,8 @@ export default ({ data }) => {
         />
       </Placeholder>
       <Markdown source={post.content} escapeHtml={false} />
-    </article>
-  )
+    </Article>
+  );
 };
 
 export const query = graphql`
