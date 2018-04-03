@@ -1,8 +1,28 @@
 import Typography from 'typography';
-import alton from 'typography-theme-alton';
 
-alton.baseFontSize = '16px'; // was 18px.
+const typography = new Typography({
+  baseFontSize: '16px',
+  baseLineHeight: 1.5,
+  scaleRatio: 2,
+  googleFonts: [
+    {
+      name: 'Open Sans',
+      styles: ['400', '400i', '700', '700i'],
+    },
+    {
+      name: 'Merriweather',
+      styles: ['300', '400', '400i', '700', '700i'],
+    },
+  ],
+  headerFontFamily: ['Merriweather', 'Georgia', 'serif'],
+  bodyFontFamily: ['Open Sans', 'Arial', 'sans-serif'],
+  // See http://kyleamathews.github.io/typography.js for the full list of options.
+});
 
-const typography = new Typography(alton);
+overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+  // body: {
+  //   color: '#212121',
+  // },
+});
 
 export default typography;

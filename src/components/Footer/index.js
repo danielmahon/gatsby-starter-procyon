@@ -25,6 +25,10 @@ const FooterLogo = styled.img`
   height: 100px;
   padding: 0 1rem;
   vertical-align: middle;
+  @media screen and (max-width: 960px) {
+    display: block;
+    margin: 1em auto;
+  }
 `;
 
 const Footer = ({ data: { site } }) => (

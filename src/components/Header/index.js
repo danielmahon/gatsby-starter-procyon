@@ -19,12 +19,17 @@ const Title = styled.h1`
   padding: 2rem;
   margin: 0;
 `;
+const Logo = styled.img`
+  height: 256px;
+`;
 const TitleLink = styled(Link)`
   color: gray;
   font-size: 0.875em;
+  font-weight: 300;
   display: inline-block;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
+  font-family: 'Merriweather';
   &:hover {
     background-color: ${({ theme }) => theme.colors.backgroundDarker};
   }
@@ -35,7 +40,7 @@ const Header = ({ data: { site } }) => (
     <HeaderContent>
       <Title>
         <Link to="/">
-          <img src={logoImage} alt={site.siteMetadata.title} />
+          <Logo src={logoImage} alt={site.siteMetadata.title} />
         </Link>
       </Title>
       <Navigation>

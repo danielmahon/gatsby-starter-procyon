@@ -9,6 +9,9 @@ import theme from './theme.js';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const MainBackground = styled.main`
+  background-color: white;
+`;
 const Main = styled.main`
   margin: 0 auto;
   max-width: 960px;
@@ -22,7 +25,9 @@ const TemplateWrapper = ({ children, data: { site } }) => (
         meta={[{ name: 'description', content: site.siteMetadata.description }]}
       />
       <Header data={{ site }} />
-      <Main>{children()}</Main>
+      <MainBackground>
+        <Main>{children()}</Main>
+      </MainBackground>
       <Footer data={{ site }} />
     </div>
   </ThemeProvider>

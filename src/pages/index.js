@@ -12,14 +12,20 @@ const List = styled.ul`
 const ListItem = styled.li`
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
-  border: 1px solid #eee;
+  padding: 1rem 0;
+  margin: 0;
+  border-bottom: 1px solid #eee;
   overflow: hidden;
-  border-radius: 5px;
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 const ListLink = styled(Link)`
-  display: flex;
-  color: #000;
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 const Placeholder = styled.div`
   background-color: #eee;
@@ -29,6 +35,7 @@ const Placeholder = styled.div`
 const Thumbnail = styled.img`
   display: block;
   height: 100%;
+  border-radius: 3px;
 `;
 
 const IndexPage = ({ data }) => {
@@ -37,19 +44,19 @@ const IndexPage = ({ data }) => {
       <List>
         {data.allPosts.edges.map(post => (
           <ListItem key={post.node.id}>
+            <Placeholder>
+              <Thumbnail
+                alt={post.node.title}
+                src={
+                  post.node.coverImage
+                    ? `https://media.graphcms.com/resize=w:100,h:100,fit:crop/${
+                        post.node.coverImage.handle
+                      }`
+                    : 'https://via.placeholder.com/100x100'
+                }
+              />
+            </Placeholder>
             <ListLink to={`/post/${post.node.slug}`}>
-              <Placeholder>
-                <Thumbnail
-                  alt={post.node.title}
-                  src={
-                    post.node.coverImage
-                      ? `https://media.graphcms.com/resize=w:100,h:100,fit:crop/${
-                          post.node.coverImage.handle
-                        }`
-                      : 'https://via.placeholder.com/100x100'
-                  }
-                />
-              </Placeholder>
               <h3>{post.node.title}</h3>
             </ListLink>
           </ListItem>

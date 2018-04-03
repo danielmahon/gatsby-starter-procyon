@@ -3,12 +3,19 @@ import Markdown from 'react-markdown';
 import styled from 'styled-components';
 
 const Article = styled.article`
-  margin: 2rem 0;
+  padding: 2em 1em;
 `;
 
 const Placeholder = styled.div`
   height: 366px;
   background-color: #eee;
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+const ArticleImage = styled.img`
+  object-fit: contain;
+  width: 100%;
+  height: 366px;
 `;
 
 export default ({ data }) => {
@@ -17,7 +24,7 @@ export default ({ data }) => {
     <Article>
       <h1>{post.title}</h1>
       <Placeholder>
-        <img
+        <ArticleImage
           alt={post.title}
           src={
             post.coverImage
