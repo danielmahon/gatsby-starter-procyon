@@ -1,3 +1,7 @@
+## v0.0.7 - 2018-04-03
+
+- Adds more sample pages
+
 ## v0.0.6 - 2018-04-02
 
 - Formatting for mobile, Adds Google Fonts
