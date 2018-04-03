@@ -1,3 +1,7 @@
+## v0.0.5 - 2018-04-02
+
+- Adds typography and styles
+
 ## v0.0.4 - 2018-04-02
 
 - Updates versionist config
