@@ -20,15 +20,15 @@ labore ingeniis, quis vidisse ubi labore tempor, ita quem offendit probant. Aut
 illum cillum minim consequat ea legam te iis fore consequat.
 `;
 
-const Home = ({ data }) => {
+const Services = ({ data }) => {
   return (
     <Section>
       <Content>
-        <Helmet title="About" />
-        <h1>Home</h1>
+        <Helmet title="Services" />
+        <h1>Services</h1>
         <Markdown source={content} escapeHtml={false} />
       </Content>
     </Section>
   );
 };
-export default Home;
+export default Services;

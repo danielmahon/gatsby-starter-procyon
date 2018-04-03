@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Main = styled.div`
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 `;
 
 const NotFoundPage = () => (

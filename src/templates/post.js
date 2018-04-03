@@ -3,7 +3,9 @@ import Markdown from 'react-markdown';
 import styled from 'styled-components';
 
 const Article = styled.article`
-  padding: 2em 1em;
+  padding: 2em 0;
+  margin: 0 auto;
+  max-width: 720px;
 `;
 
 const Placeholder = styled.div`
@@ -13,7 +15,7 @@ const Placeholder = styled.div`
   margin-bottom: 2rem;
 `;
 const ArticleImage = styled.img`
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
   height: 366px;
 `;

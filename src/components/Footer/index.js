@@ -34,11 +34,13 @@ const FooterLogo = styled.img`
 const Footer = ({ data: { site } }) => (
   <FooterWrapper>
     <FooterContent>
-      <FooterLink to="/">&copy; 2018 {site.siteMetadata.title}</FooterLink>
-      <FooterLogo src={logoImage} alt={site.siteMetadata.title} />
-      <FooterLink to="/">Privacy Policy</FooterLink>
+      <span>&copy; 2018 {site.siteMetadata.title}</span>
+      <Link to="/">
+        <FooterLogo src={logoImage} alt={site.siteMetadata.title} />
+      </Link>
+      <FooterLink to="/privacy-policy">Privacy Policy</FooterLink>
       {` | `}
-      <FooterLink to="/">Terms of Service</FooterLink>
+      <FooterLink to="/terms-of-service">Terms of Service</FooterLink>
     </FooterContent>
   </FooterWrapper>
 );
