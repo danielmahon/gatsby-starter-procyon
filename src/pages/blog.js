@@ -44,7 +44,7 @@ const IndexPage = ({ data }) => {
       <Grid item xs={8}>
         <Helmet title="Blog" />
         <Typography variant="display1">Blog</Typography>
-        <Typography component="div">
+        <Typography>
           <p>
             Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod ubi
             nisi, ex ab ipsum enim quis, quo quamquam a ullamco. Ab aliquip
@@ -54,18 +54,20 @@ const IndexPage = ({ data }) => {
         <List>
           {data.allPosts.edges.map(post => (
             <ListItem key={post.node.id}>
-              <Placeholder>
-                <Thumbnail
-                  alt={post.node.title}
-                  src={
-                    post.node.coverImage
-                      ? `https://media.graphcms.com/resize=w:100,h:100,fit:crop/${
-                          post.node.coverImage.handle
-                        }`
-                      : 'https://via.placeholder.com/100x100'
-                  }
-                />
-              </Placeholder>
+              <Link to={`/post/${post.node.slug}`}>
+                <Placeholder>
+                  <Thumbnail
+                    alt={post.node.title}
+                    src={
+                      post.node.coverImage
+                        ? `https://media.graphcms.com/resize=w:100,h:100,fit:crop/${
+                            post.node.coverImage.handle
+                          }`
+                        : 'https://via.placeholder.com/100x100'
+                    }
+                  />
+                </Placeholder>
+              </Link>
               <ListLink to={`/post/${post.node.slug}`}>
                 <Typography variant="title">{post.node.title}</Typography>
               </ListLink>

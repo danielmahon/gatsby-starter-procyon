@@ -1,32 +1,42 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { Typography } from 'material-ui';
+import { Grid, Typography } from 'material-ui';
 import logoImage from '../../../static/logo.png';
 import { rhythm } from '../../utils/typography';
 import styled from '../../utils/styled';
 
-const FooterWrapper = styled('nav')(theme => ({
+const FooterWrapper = styled(Grid, {
+  component: 'footer',
+  container: true,
+  spacing: 16,
+  fontSize: '0.75em',
+})(theme => ({
   background: theme.palette.background.default,
   borderTop: `1px solid ${theme.palette.grey[100]}`,
 }));
-const FooterContent = styled('div')(theme => ({
-  color: 'gray',
-  margin: '0 auto',
-  maxWidth: 960,
-  padding: '2rem',
+const Left = styled(Grid)(theme => ({
+  textAlign: 'right',
+}));
+const Middle = styled(Grid)(theme => ({
   textAlign: 'center',
-  fontSize: '0.75em',
+}));
+const Right = styled(Grid)(theme => ({
+  textAlign: 'left',
 }));
 const FooterLink = styled(Link)(theme => ({
   color: 'gray',
   display: 'inline-block',
   textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
 }));
 const Copyright = styled(Typography)(theme => ({
-  display: 'inline-block',
+  display: 'block',
+  lineHeight: '80px',
 }));
 const FooterLogo = styled('img')(theme => ({
-  height: 100,
+  height: 80,
   padding: '0 1rem',
   verticalAlign: 'middle',
   [theme.breakpoints.down('sm')]: {
@@ -37,21 +47,29 @@ const FooterLogo = styled('img')(theme => ({
 
 const Footer = ({ data: { site } }) => (
   <FooterWrapper>
-    <FooterContent>
+    <Left item xs={5}>
       <Copyright variant="caption">
         &copy; 2018 {site.siteMetadata.title}
+        {` | `}
+        <FooterLink to="/admin">Admin</FooterLink>
       </Copyright>
+    </Left>
+    <Middle item xs={2}>
       <Link to="/">
         <FooterLogo src={logoImage} alt={site.siteMetadata.title} />
       </Link>
-      <FooterLink to="/privacy-policy">
-        <Typography variant="caption">Privacy Policy</Typography>
-      </FooterLink>
-      {` | `}
-      <FooterLink to="/terms-of-service">
-        <Typography variant="caption">Terms of Service</Typography>
-      </FooterLink>
-    </FooterContent>
+    </Middle>
+    <Right item xs={5}>
+      <Copyright variant="caption">
+        <FooterLink to="/privacy-policy">
+          <Typography variant="caption">Privacy Policy</Typography>
+        </FooterLink>
+        {` | `}
+        <FooterLink to="/terms-of-service">
+          <Typography variant="caption">Terms of Service</Typography>
+        </FooterLink>
+      </Copyright>
+    </Right>
   </FooterWrapper>
 );
 

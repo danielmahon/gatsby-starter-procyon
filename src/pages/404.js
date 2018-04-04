@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from '../utils/styled';
-
-const Main = styled('div')(theme => ({
-  padding: '2rem 1rem',
-}));
+import Section from '../components/Section';
 
 const NotFoundPage = () => (
-  <Main>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Main>
+  <Section>
+    <Grid item xs={8}>
+      <h1>NOT FOUND</h1>
+      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    </Grid>
+    );
+  </Section>
 );
 
 export default NotFoundPage;

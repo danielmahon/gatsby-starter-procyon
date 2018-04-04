@@ -19,7 +19,9 @@ netlifyIdentity.init();
 
 const Main = styled('main')(theme => ({
   backgroundColor: 'white',
-  padding: 16,
+}));
+const Padding = styled('div')(theme => ({
+  padding: '0 1em',
 }));
 
 class App extends Component {
@@ -39,7 +41,7 @@ class App extends Component {
   render() {
     const { children, data: { site } } = this.props;
     return (
-      <div>
+      <Padding>
         <Helmet
           title={site.siteMetadata.title}
           meta={[
@@ -49,7 +51,7 @@ class App extends Component {
         <Header data={{ site }} />
         <Main>{children()}</Main>
         <Footer data={{ site }} />
-      </div>
+      </Padding>
     );
   }
 }

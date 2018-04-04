@@ -16,11 +16,16 @@ export default createMuiTheme({
   },
   typography: {
     fontFamily: bodyFont,
-    // color: grey[900],
+    fontSize: 14, // default
+    // color: grey[500],
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 600,
-    display1: { fontFamily: headlineFont, color: grey[900] },
+    display1: {
+      fontFamily: headlineFont,
+      color: grey[900],
+      marginBottom: '1rem',
+    },
     display2: { fontFamily: headlineFont, color: grey[900] },
     display3: { fontFamily: headlineFont, color: grey[900] },
     display4: { fontFamily: headlineFont, color: grey[900] },

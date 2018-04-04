@@ -3,15 +3,10 @@ import Link from 'gatsby-link';
 import Markdown from 'react-markdown';
 import Helmet from 'react-helmet';
 import netlifyIdentity from 'netlify-identity-widget';
+import { Typography, Grid } from 'material-ui';
 import styled from '../utils/styled';
-
-const Section = styled('section')(theme => ({
-  padding: '2rem 1rem',
-}));
-const Content = styled('div')(theme => ({
-  maxWidth: 720,
-  margin: '0 auto',
-}));
+import Section from '../components/Section';
+import Button from '../components/Button';
 
 const content = `
 De commodo exquisitaque. Ut magna labore nam litteris, nulla se cupidatat de
@@ -28,12 +23,18 @@ class Admin extends Component {
   render() {
     return (
       <Section>
-        <Content>
+        <Grid item xs={8}>
           <Helmet title="Admin" />
-          <h1>Admin</h1>
-          <button onClick={this.handleLogin}>Login</button>
-          <Markdown source={content} escapeHtml={false} />
-        </Content>
+          <Typography variant="display1">Admin</Typography>
+          <Button variant="stroked" onClick={this.handleLogin}>
+            Login
+          </Button>
+          <Typography
+            component={Markdown}
+            source={content}
+            escapeHtml={false}
+          />
+        </Grid>
       </Section>
     );
   }
