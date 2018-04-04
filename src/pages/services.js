@@ -1,16 +1,10 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import styled from 'styled-components';
 import Markdown from 'react-markdown';
 import Helmet from 'react-helmet';
-
-const Section = styled.section`
-  padding: 2rem 1rem;
-`;
-const Content = styled.div`
-  max-width: 720px;
-  margin: 0 auto;
-`;
+import styled from '../utils/styled';
+import { Typography, Grid } from 'material-ui';
+import Section from '../components/Section';
 
 const content = `
 De commodo exquisitaque. Ut magna labore nam litteris, nulla se cupidatat de
@@ -23,11 +17,11 @@ illum cillum minim consequat ea legam te iis fore consequat.
 const Services = ({ data }) => {
   return (
     <Section>
-      <Content>
+      <Grid item xs={8}>
         <Helmet title="Services" />
-        <h1>Services</h1>
-        <Markdown source={content} escapeHtml={false} />
-      </Content>
+        <Typography variant="display1">Services</Typography>
+        <Typography component={Markdown} source={content} escapeHtml={false} />
+      </Grid>
     </Section>
   );
 };

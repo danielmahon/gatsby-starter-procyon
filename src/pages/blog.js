@@ -1,77 +1,78 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import styled from '../utils/styled';
+import { Typography, Grid } from 'material-ui';
+import Section from '../components/Section';
 
-const Section = styled.section`
-  padding: 2rem 1rem;
-  margin: 0 auto;
-  max-width: 720px;
-`;
-const List = styled.ul`
-  padding: 0;
-  margin: 0;
-`;
-const ListItem = styled.li`
-  display: flex;
-  align-items: center;
-  padding: 1rem 0;
-  margin: 0;
-  border-bottom: 1px solid #eee;
-  overflow: hidden;
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-const ListLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-const Placeholder = styled.div`
-  background-color: #eee;
-  min-width: 100px;
-  margin-right: 24px;
-`;
-const Thumbnail = styled.img`
-  display: block;
-  height: 100%;
-  border-radius: 3px;
-`;
+const List = styled('ul')(theme => ({
+  padding: 0,
+  margin: 0,
+}));
+const ListItem = styled('li')(theme => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: '1rem 0',
+  margin: 0,
+  borderBottom: '1px solid #eee',
+  overflow: 'hidden',
+  '&:last-child': {
+    borderBottom: 'none',
+  },
+}));
+const ListLink = styled(Link)(theme => ({
+  textDecoration: 'none',
+  color: 'inherit',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+}));
+const Placeholder = styled('div')(theme => ({
+  backgroundColor: '#eee',
+  minWidth: 100,
+  marginRight: 24,
+}));
+const Thumbnail = styled('img')(theme => ({
+  display: 'block',
+  height: '100%',
+  borderRadius: 3,
+}));
 
 const IndexPage = ({ data }) => {
   return (
     <Section>
-      <Helmet title="Blog" />
-      <h1>Blog</h1>
-      <p>
-        Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod ubi nisi, ex
-        ab ipsum enim quis, quo quamquam a ullamco. Ab aliquip comprehenderit,
-        occaecat quae fugiat excepteur export.
-      </p>
-      <List>
-        {data.allPosts.edges.map(post => (
-          <ListItem key={post.node.id}>
-            <Placeholder>
-              <Thumbnail
-                alt={post.node.title}
-                src={
-                  post.node.coverImage
-                    ? `https://media.graphcms.com/resize=w:100,h:100,fit:crop/${
-                        post.node.coverImage.handle
-                      }`
-                    : 'https://via.placeholder.com/100x100'
-                }
-              />
-            </Placeholder>
-            <ListLink to={`/post/${post.node.slug}`}>
-              <h3>{post.node.title}</h3>
-            </ListLink>
-          </ListItem>
-        ))}
-      </List>
+      <Grid item xs={8}>
+        <Helmet title="Blog" />
+        <Typography variant="display1">Blog</Typography>
+        <Typography component="div">
+          <p>
+            Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod ubi
+            nisi, ex ab ipsum enim quis, quo quamquam a ullamco. Ab aliquip
+            comprehenderit, occaecat quae fugiat excepteur export.
+          </p>
+        </Typography>
+        <List>
+          {data.allPosts.edges.map(post => (
+            <ListItem key={post.node.id}>
+              <Placeholder>
+                <Thumbnail
+                  alt={post.node.title}
+                  src={
+                    post.node.coverImage
+                      ? `https://media.graphcms.com/resize=w:100,h:100,fit:crop/${
+                          post.node.coverImage.handle
+                        }`
+                      : 'https://via.placeholder.com/100x100'
+                  }
+                />
+              </Placeholder>
+              <ListLink to={`/post/${post.node.slug}`}>
+                <Typography variant="title">{post.node.title}</Typography>
+              </ListLink>
+            </ListItem>
+          ))}
+        </List>
+      </Grid>
     </Section>
   );
 };

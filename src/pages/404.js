@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '../utils/styled';
 
-const Main = styled.div`
-  padding: 2rem 1rem;
-`;
+const Main = styled('div')(theme => ({
+  padding: '2rem 1rem',
+}));
 
 const NotFoundPage = () => (
   <Main>

@@ -11,13 +11,19 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    `gatsby-plugin-styled-components`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    // `gatsby-plugin-styled-components`,
+    // {
+    //   resolve: 'gatsby-plugin-material-ui',
+    //   options: {
+    //     pathToTheme: 'src/utils/theme',
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-graphcms`,
       options: {

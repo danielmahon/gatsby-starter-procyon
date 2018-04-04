@@ -16,13 +16,12 @@ const typography = new Typography({
   ],
   headerFontFamily: ['Merriweather', 'Georgia', 'serif'],
   bodyFontFamily: ['Open Sans', 'Arial', 'sans-serif'],
+  // overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+  //   body: {
+  //     color: '#212121',
+  //   },
+  // });
   // See http://kyleamathews.github.io/typography.js for the full list of options.
-});
-
-overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
-  // body: {
-  //   color: '#212121',
-  // },
 });
 
 export default typography;

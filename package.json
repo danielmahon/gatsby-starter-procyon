@@ -4,19 +4,22 @@
   "version": "0.0.7",
   "author": "Daniel Mahon <daniel@mahonstudios.com>",
   "dependencies": {
-    "babel-plugin-styled-components": "1.5.1",
     "gatsby": "^1.9.241",
     "gatsby-link": "^1.6.39",
     "gatsby-plugin-manifest": "1.0.15",
+    "gatsby-plugin-material-ui": "0.1.3",
     "gatsby-plugin-netlify": "1.0.19",
     "gatsby-plugin-offline": "1.0.15",
     "gatsby-plugin-react-helmet": "^2.0.8",
-    "gatsby-plugin-styled-components": "2.0.11",
     "gatsby-plugin-typography": "1.7.18",
     "gatsby-source-graphcms": "0.0.1",
+    "material-ui": "1.0.0-beta.40",
+    "netlify-identity-widget": "1.4.11",
     "react-helmet": "^5.2.0",
     "react-markdown": "3.3.0",
-    "styled-components": "3.2.5",
+    "typeface-merriweather": "0.0.54",
+    "typeface-open-sans": "0.0.54",
+    "typeface-roboto": "0.0.54",
     "typography-theme-alton": "0.15.10"
   },
   "keywords": [
@@ -37,9 +40,8 @@
   "devDependencies": {
     "prettier": "1.11.1",
     "stylelint": "9.2.0",
-    "stylelint-config-recommended": "2.1.0",
-    "stylelint-config-styled-components": "0.1.1",
-    "stylelint-processor-styled-components": "1.3.1",
+    "stylelint-config-standard": "18.2.0",
+    "stylelint-processor-glamorous": "0.3.0",
     "versionist": "github:danielmahon/versionist",
     "versionist-plugins": "1.3.1"
   },

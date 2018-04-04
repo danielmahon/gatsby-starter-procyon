@@ -1,24 +1,24 @@
 import React from 'react';
 import Markdown from 'react-markdown';
-import styled from 'styled-components';
+import styled from '../utils/styled';
 
-const Article = styled.article`
-  padding: 2em 0;
-  margin: 0 auto;
-  max-width: 720px;
-`;
+const Article = styled('article')(theme => ({
+  padding: '2em 0',
+  margin: '0 auto',
+  maxWidth: 720,
+}));
 
-const Placeholder = styled.div`
-  height: 366px;
-  background-color: #eee;
-  text-align: center;
-  margin-bottom: 2rem;
-`;
-const ArticleImage = styled.img`
-  object-fit: cover;
-  width: 100%;
-  height: 366px;
-`;
+const Placeholder = styled('div')(theme => ({
+  height: 366,
+  backgroundColor: '#eee',
+  textAlign: 'center',
+  marginBottom: '2rem',
+}));
+const ArticleImage = styled('img')(theme => ({
+  objectFit: 'cover',
+  width: '100%',
+  height: 366,
+}));
 
 export default ({ data }) => {
   const post = data.posts;

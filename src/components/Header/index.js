@@ -1,39 +1,40 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import styled from 'styled-components';
+import { Button } from 'material-ui';
 import logoImage from '../../../static/logo.png';
+import styled from '../../utils/styled';
 
-const HeaderWrapper = styled.nav`
-  background: ${({ theme }) => theme.colors.background};
-  border-bottom: ${({ theme }) => `1px solid ${theme.colors.backgroundDarker}`};
-`;
-const HeaderContent = styled.div`
-  margin: 0 auto;
-  max-width: 960px;
-  text-align: center;
-`;
-const Navigation = styled.div`
-  padding: 1rem 0;
-`;
-const Title = styled.h1`
-  padding: 2rem;
-  margin: 0;
-`;
-const Logo = styled.img`
-  height: 256px;
-`;
-const TitleLink = styled(Link)`
-  color: gray;
-  font-size: 0.875em;
-  font-weight: 300;
-  display: inline-block;
-  text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  font-family: 'Merriweather';
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.backgroundDarker};
-  }
-`;
+const HeaderWrapper = styled('header')(theme => ({
+  background: theme.palette.background.default,
+  borderBottom: theme.palette.grey[50],
+}));
+const HeaderContent = styled('div')(theme => ({
+  margin: '0 auto',
+  maxWidth: 960,
+  textAlign: 'center',
+}));
+const Navigation = styled('nav')(theme => ({
+  padding: '1rem 0',
+}));
+const Title = styled('h1')(theme => ({
+  padding: '2rem',
+  margin: 0,
+}));
+const Logo = styled('img')(theme => ({
+  height: 256,
+}));
+const NavLink = styled(Button, { component: Link })(theme => ({
+  color: 'gray',
+  // fontSize: '0.875em',
+  // fontWeight: 300,
+  // display: 'inline-block',
+  // textDecoration: 'none',
+  // padding: '0.5rem 0.75rem',
+  // fontFamily: 'Merriweather',
+  // '&:hover': {
+  //   backgroundColor: theme.palette.grey[50],
+  // },
+}));
 
 const Header = ({ data: { site } }) => (
   <HeaderWrapper>
@@ -44,11 +45,11 @@ const Header = ({ data: { site } }) => (
         </Link>
       </Title>
       <Navigation>
-        <TitleLink to="/">Home</TitleLink>
-        <TitleLink to="/services">Services</TitleLink>
-        <TitleLink to="/about">About</TitleLink>
-        <TitleLink to="/blog">Blog</TitleLink>
-        <TitleLink to="/contact">Contact</TitleLink>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/services">Services</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </Navigation>
     </HeaderContent>
   </HeaderWrapper>
