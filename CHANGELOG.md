@@ -1,3 +1,7 @@
+## v0.0.8 - 2018-04-03
+
+- Adds Material-UI
+
 ## v0.0.7 - 2018-04-03
 
 - Adds more sample pages
