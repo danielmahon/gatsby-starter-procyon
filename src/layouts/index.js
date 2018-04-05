@@ -20,9 +20,6 @@ import { ApolloProvider } from 'react-apollo';
 import 'medium-draft/lib/index.css';
 import './index.css';
 
-// Initialize NetlifyIdentity
-netlifyIdentity.init();
-
 // Create Apollo Client
 const httpLink = createHttpLink({
   uri: process.env.GATSBY_GRAPHQLCMS_ENDPOINT,
@@ -61,6 +58,10 @@ const Wrapper = styled('div')(theme => ({
 }));
 
 class App extends Component {
+  componentDidMount() {
+    // Initialize NetlifyIdentity
+    netlifyIdentity.init();
+  }
   render() {
     const { children, data: { site } } = this.props;
     return (
