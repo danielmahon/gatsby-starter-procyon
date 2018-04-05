@@ -11,24 +11,11 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    // `gatsby-plugin-styled-components`,
-    // {
-    //   resolve: 'gatsby-plugin-material-ui',
-    //   options: {
-    //     pathToTheme: 'src/utils/theme',
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-typography`,
-    //   options: {
-    //     pathToConfigModule: `src/utils/typography`,
-    //   },
-    // },
     {
       resolve: `gatsby-source-graphcms`,
       options: {
-        endpoint: process.env.GRAPHQLCMS_ENDPOINT,
-        token: process.env.GRAPHQLCMS_TOKEN,
+        endpoint: process.env.GATSBY_GRAPHQLCMS_ENDPOINT,
+        token: process.env.GATSBY_GRAPHQLCMS_TOKEN,
         // Get all remote data
         query: `{
           allPosts {

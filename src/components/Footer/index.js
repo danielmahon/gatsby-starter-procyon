@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import { Grid, Typography } from 'material-ui';
 import logoImage from '../../../static/logo.png';
-import { rhythm } from '../../utils/typography';
 import styled from '../../utils/styled';
+import netlifyIdentity from 'netlify-identity-widget';
 
 const FooterWrapper = styled(Grid, {
   component: 'footer',
@@ -12,65 +12,84 @@ const FooterWrapper = styled(Grid, {
   fontSize: '0.75em',
 })(theme => ({
   background: theme.palette.background.default,
-  borderTop: `1px solid ${theme.palette.grey[100]}`,
+  padding: `${theme.spacing.unit * 4}px 0`,
+  '& a:link, & a:visited': {
+    cursor: 'pointer',
+    color: 'inherit',
+    textDecoration: 'none',
+  },
+  '& a:hover, & a:active': {
+    cursor: 'pointer',
+    color: 'inherit',
+    textDecoration: 'underline',
+  },
 }));
 const Left = styled(Grid)(theme => ({
   textAlign: 'right',
+  [theme.breakpoints.down('sm')]: {
+    textAlign: 'center',
+  },
 }));
 const Middle = styled(Grid)(theme => ({
   textAlign: 'center',
 }));
 const Right = styled(Grid)(theme => ({
   textAlign: 'left',
-}));
-const FooterLink = styled(Link)(theme => ({
-  color: 'gray',
-  display: 'inline-block',
-  textDecoration: 'none',
-  '&:hover': {
-    textDecoration: 'underline',
+  [theme.breakpoints.down('sm')]: {
+    textAlign: 'center',
   },
 }));
-const Copyright = styled(Typography)(theme => ({
+const FooterLink = styled(Link)(theme => ({
+  display: 'inline-block',
+}));
+const Caption = styled(Typography, { variant: 'caption' })(theme => ({
   display: 'block',
   lineHeight: '80px',
+  [theme.breakpoints.down('sm')]: {
+    lineHeight: '40px',
+  },
 }));
 const FooterLogo = styled('img')(theme => ({
   height: 80,
   padding: '0 1rem',
-  verticalAlign: 'middle',
-  [theme.breakpoints.down('sm')]: {
-    display: 'block',
-    margin: '1em auto',
-  },
 }));
 
-const Footer = ({ data: { site } }) => (
-  <FooterWrapper>
-    <Left item xs={5}>
-      <Copyright variant="caption">
-        &copy; 2018 {site.siteMetadata.title}
-        {` | `}
-        <FooterLink to="/admin">Admin</FooterLink>
-      </Copyright>
-    </Left>
-    <Middle item xs={2}>
-      <Link to="/">
-        <FooterLogo src={logoImage} alt={site.siteMetadata.title} />
-      </Link>
-    </Middle>
-    <Right item xs={5}>
-      <Copyright variant="caption">
-        <FooterLink to="/privacy-policy">
-          <Typography variant="caption">Privacy Policy</Typography>
-        </FooterLink>
-        {` | `}
-        <FooterLink to="/terms-of-service">
-          <Typography variant="caption">Terms of Service</Typography>
-        </FooterLink>
-      </Copyright>
-    </Right>
-  </FooterWrapper>
-);
+class Footer extends Component {
+  handleLogin = type => () => {
+    netlifyIdentity.open(type);
+  };
+  render() {
+    const { data: { site } } = this.props;
+    return (
+      <FooterWrapper>
+        <Left item xs={12} sm={5}>
+          <Caption>
+            &copy; 2018 {site.siteMetadata.title}
+            {` | `}
+            <a onClick={this.handleLogin('login')}>Login</a>
+            {` | `}
+            <a onClick={this.handleLogin('signup')}>Signup</a>
+          </Caption>
+        </Left>
+        <Middle item xs={12} sm={2}>
+          <Link to="/">
+            <FooterLogo src={logoImage} alt={site.siteMetadata.title} />
+          </Link>
+        </Middle>
+        <Right item xs={12} sm={5}>
+          <Caption>
+            <FooterLink to="/privacy-policy">
+              <Typography variant="caption">Privacy Policy</Typography>
+            </FooterLink>
+            {` | `}
+            <FooterLink to="/terms-of-service">
+              <Typography variant="caption">Terms of Service</Typography>
+            </FooterLink>
+          </Caption>
+        </Right>
+      </FooterWrapper>
+    );
+  }
+}
 
 export default Footer;

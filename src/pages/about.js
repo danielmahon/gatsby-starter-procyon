@@ -17,7 +17,7 @@ illum cillum minim consequat ea legam te iis fore consequat.
 const About = ({ data }) => {
   return (
     <Section>
-      <Grid item xs={8}>
+      <Grid item xs={12} sm={8}>
         <Helmet title="About" />
         <Typography variant="display1">About</Typography>
         <Typography component={Markdown} source={content} escapeHtml={false} />

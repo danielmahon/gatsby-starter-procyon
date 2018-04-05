@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
+import Markdown from 'react-markdown';
 import styled from '../utils/styled';
 import { Typography, Grid } from 'material-ui';
 import Section from '../components/Section';
@@ -12,7 +13,7 @@ const List = styled('ul')(theme => ({
 const ListItem = styled('li')(theme => ({
   display: 'flex',
   alignItems: 'center',
-  padding: '1rem 0',
+  padding: `${theme.spacing.unit * 2}px 0`,
   margin: 0,
   borderBottom: '1px solid #eee',
   overflow: 'hidden',
@@ -20,7 +21,7 @@ const ListItem = styled('li')(theme => ({
     borderBottom: 'none',
   },
 }));
-const ListLink = styled(Link)(theme => ({
+const PostTitle = styled(Link)(theme => ({
   textDecoration: 'none',
   color: 'inherit',
   '&:hover': {
@@ -30,7 +31,7 @@ const ListLink = styled(Link)(theme => ({
 const Placeholder = styled('div')(theme => ({
   backgroundColor: '#eee',
   minWidth: 100,
-  marginRight: 24,
+  marginRight: theme.spacing.unit * 3,
 }));
 const Thumbnail = styled('img')(theme => ({
   display: 'block',
@@ -41,15 +42,13 @@ const Thumbnail = styled('img')(theme => ({
 const IndexPage = ({ data }) => {
   return (
     <Section>
-      <Grid item xs={8}>
+      <Grid item xs={12} sm={8}>
         <Helmet title="Blog" />
         <Typography variant="display1">Blog</Typography>
         <Typography>
-          <p>
-            Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod ubi
-            nisi, ex ab ipsum enim quis, quo quamquam a ullamco. Ab aliquip
-            comprehenderit, occaecat quae fugiat excepteur export.
-          </p>
+          Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod ubi nisi,
+          ex ab ipsum enim quis, quo quamquam a ullamco. Ab aliquip
+          comprehenderit, occaecat quae fugiat excepteur export.
         </Typography>
         <List>
           {data.allPosts.edges.map(post => (
@@ -68,9 +67,16 @@ const IndexPage = ({ data }) => {
                   />
                 </Placeholder>
               </Link>
-              <ListLink to={`/post/${post.node.slug}`}>
-                <Typography variant="title">{post.node.title}</Typography>
-              </ListLink>
+              <div>
+                <PostTitle to={`/post/${post.node.slug}`}>
+                  <Typography variant="title">{post.node.title}</Typography>
+                </PostTitle>
+                <Typography>
+                  Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod
+                  ubi nisi, ex ab ipsum enim quis, quo quamquam a ullamco. Ab
+                  aliquip comprehenderit, occaecat quae fugiat excepteur export.
+                </Typography>
+              </div>
             </ListItem>
           ))}
         </List>
@@ -88,6 +94,7 @@ export const allPostsQuery = graphql`
           id
           title
           slug
+          content
           coverImage {
             handle
           }

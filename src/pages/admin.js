@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import Markdown from 'react-markdown';
 import Helmet from 'react-helmet';
-import netlifyIdentity from 'netlify-identity-widget';
 import { Typography, Grid } from 'material-ui';
 import styled from '../utils/styled';
 import Section from '../components/Section';
@@ -17,13 +16,10 @@ illum cillum minim consequat ea legam te iis fore consequat.
 `;
 
 class Admin extends Component {
-  handleLogin = () => {
-    netlifyIdentity.open();
-  };
   render() {
     return (
       <Section>
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={8}>
           <Helmet title="Admin" />
           <Typography variant="display1">Admin</Typography>
           <Button variant="stroked" onClick={this.handleLogin}>

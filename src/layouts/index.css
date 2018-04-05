@@ -1,4 +1,14 @@
-html, body {
-  /* width: 100%; */
-  /* overflow-x: hidden; */
+/* html, body {
+  width: 100%;
+  overflow-x: hidden;
+} */
+a:link, a:visited {
+  cursor: pointer;
+  color: inherit;
+  /* text-decoration: none; */
+}
+a:hover, a:active {
+  cursor: pointer;
+  color: inherit;
+  /* text-decoration: underline; */
 }

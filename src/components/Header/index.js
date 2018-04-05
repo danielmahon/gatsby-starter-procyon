@@ -10,19 +10,18 @@ const HeaderWrapper = styled(Grid, {
   spacing: 16,
 })(theme => ({
   background: theme.palette.background.default,
-  borderBottom: theme.palette.grey[50],
 }));
 const HeaderContent = styled(Grid)(theme => ({
   textAlign: 'center',
 }));
 const Navigation = styled('nav')(theme => ({
-  padding: '1rem 0',
+  padding: `${theme.spacing.unit * 2}px 0`,
 }));
 const Title = styled('h1')(theme => ({
-  padding: '2rem 0 0',
   margin: 0,
 }));
 const Logo = styled('img')(theme => ({
+  marginTop: theme.spacing.unit * 4,
   height: 196,
 }));
 const NavLink = styled(Button, { component: Link })(theme => ({
@@ -32,11 +31,9 @@ const NavLink = styled(Button, { component: Link })(theme => ({
 const Header = ({ data: { site } }) => (
   <HeaderWrapper>
     <HeaderContent item xs={12}>
-      <Title>
-        <Link to="/">
-          <Logo src={logoImage} alt={site.siteMetadata.title} />
-        </Link>
-      </Title>
+      <Link to="/">
+        <Logo src={logoImage} alt={site.siteMetadata.title} />
+      </Link>
       <Navigation>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/services">Services</NavLink>

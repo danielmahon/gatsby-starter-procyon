@@ -28,3 +28,11 @@ export function loginUser() {
 export function logoutUser() {
   localStorage.removeItem('currentUser');
 }
+
+// Bind to events
+// netlifyIdentity.on('init', user => console.log(user));
+// netlifyIdentity.on('login', user => console.log(user));
+// netlifyIdentity.on('logout', () => console.log('Logged out'));
+// netlifyIdentity.on('error', err => console.error('Logged out'));
+// netlifyIdentity.on('open', () => console.log('Widget opened'));
+// netlifyIdentity.on('close', () => console.log('Widget closed'));
