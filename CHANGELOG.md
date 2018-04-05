@@ -1,3 +1,8 @@
+## v0.0.9 - 2018-04-05
+
+- Adds DraftJS live editor
+- Finished basic styling
+
 ## v0.0.8 - 2018-04-03
 
 - Adds Material-UI
