@@ -1,3 +1,7 @@
+## v0.0.10 - 2018-04-05
+
+- Moves netlify-identity-widget to onUpdate
+
 ## v0.0.9 - 2018-04-05
 
 - Adds DraftJS live editor
