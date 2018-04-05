@@ -13,7 +13,7 @@ import FormatQuoteOpen from 'mdi-material-ui/FormatQuoteOpen';
 import History from 'mdi-material-ui/History';
 import ContentSave from 'mdi-material-ui/ContentSave';
 import { markdownToDraft, draftToMarkdown } from 'markdown-draft-js';
-import { Mutation, Query } from 'react-apollo';
+import { Mutation, Query, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from '../utils/styled';
 import DraftTypography from './DraftTypography';
@@ -31,6 +31,7 @@ const Wrapper = styled('div')(theme => ({
   '& .public-DraftEditor-content .md-block:first-child': {
     marginTop: '1em',
   },
+  marginRight: -2,
   borderRight: `2px solid ${theme.palette.secondary[100]}`,
 }));
 
@@ -38,8 +39,8 @@ const Buttons = styled('div')(theme => ({
   position: 'absolute',
   display: 'flex',
   alignItems: 'center',
-  bottom: -theme.spacing.unit * 8,
-  right: 0,
+  bottom: -theme.spacing.unit * 8 - 2,
+  right: -2,
   borderTop: `2px solid ${theme.palette.secondary[100]}`,
 }));
 
@@ -93,54 +94,80 @@ const blockRenderMap = Immutable.Map({
 // keep support for other draft default block types and add our myCustomBlock type
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
+const GET_NODES = gql`
+  query {
+    nodes @client {
+      id
+      content
+    }
+  }
+`;
+
 class EditableMarkdown extends Component {
   state = {
     user: null,
+    nodes: [],
     source: null,
     originalEditorState: null,
     editorState: null,
   };
   componentDidMount() {
-    const { source } = this.props;
+    const { source, client, node = {} } = this.props;
     const user = netlifyIdentity.currentUser();
-    var rawObject = markdownToDraft(source);
-    var editorState = createEditorState(rawObject);
-    if (user) {
-      this.setState({
-        user,
-        source,
-        editorState,
-        originalEditorState: editorState,
-      });
-    } else {
-      this.setState({ source });
-    }
-    netlifyIdentity.on('init', user =>
-      this.setState({
-        user,
-        source,
-        editorState,
-        originalEditorState: editorState,
-      })
-    );
-    netlifyIdentity.on('login', user =>
-      this.setState({
-        user,
-        source,
-        editorState,
-        originalEditorState: editorState,
-      })
-    );
-    netlifyIdentity.on('logout', () =>
-      this.setState({
-        user: null,
-        originalEditorState: null,
-        editorState: null,
-      })
-    );
+    let markdown = source;
+    let rawObject = markdownToDraft(markdown);
+    // See if we have a locally saved node
+    // Saving triggers a server rebuild so we store data locally
+    // to account for the delay
+    client.query({ query: GET_NODES }).then(({ data: { nodes } }) => {
+      const localNode = _.find(nodes, { id: node.id });
+      if (localNode) {
+        markdown = localNode.content;
+        rawObject = markdownToDraft(markdown);
+      }
+      const editorState = createEditorState(rawObject);
+      // If user logged in then show editor
+      if (user) {
+        this.setState({
+          user,
+          nodes,
+          source: markdown,
+          editorState,
+          originalEditorState: editorState,
+        });
+      } else {
+        // If user not logged in source regular text
+        this.setState({ source: markdown });
+      }
+      // Login handlers
+      netlifyIdentity.on(
+        'login',
+        this.onLogin({ nodes, markdown, editorState })
+      );
+      netlifyIdentity.on('logout', this.onLogout);
+    });
   }
   onChange = editorState => {
     this.setState({ editorState });
+  };
+  onLogin = ({ nodes, markdown, editorState }) => user => {
+    if (this._calledComponentWillUnmount) return;
+    this.setState({
+      user,
+      nodes,
+      source: markdown,
+      editorState,
+      originalEditorState: editorState,
+    });
+  };
+  onLogout = () => {
+    if (this._calledComponentWillUnmount) return;
+    this.setState({
+      user: null,
+      nodes: [],
+      originalEditorState: null,
+      editorState: null,
+    });
   };
   handleReset = () => {
     const { originalEditorState } = this.state;
@@ -148,7 +175,7 @@ class EditableMarkdown extends Component {
   };
   handleSave = ({ updateNode }) => () => {
     const { editorState } = this.state;
-    const { handleSave, node } = this.props;
+    const { node = {} } = this.props;
     const markdown = draftToMarkdown(
       convertToRaw(editorState.getCurrentContent())
     );
@@ -156,139 +183,122 @@ class EditableMarkdown extends Component {
     updateNode({ variables: { id: node.id, content: markdown } });
     console.log('Synced to GraphCMS');
   };
-  updateState = data => {
-    const markdown = data[Object.keys(data)[0]].content;
-    var rawObject = markdownToDraft(markdown);
-    var editorState = createEditorState(rawObject);
-    this.setState({ editorState });
-  };
   render() {
-    let { user, source, editorState, originalEditorState } = this.state;
+    const {
+      user,
+      source,
+      editorState,
+      contentHasChanged,
+      originalEditorState,
+      nodes,
+    } = this.state;
     const { node = {}, mutation } = this.props;
     if (editorState) {
-      const GET_NODES = gql`
-        query {
-          nodes @client {
-            id
-            title
-            content
-          }
-        }
-      `;
       return (
-        <Query query={GET_NODES}>
-          {({ data: { nodes }, client }) => {
-            const localNode = _.find(nodes, { id: node.id });
-            if (localNode) {
-              const rawObject = markdownToDraft(localNode.content);
-              editorState = createEditorState(rawObject);
-            }
+        <Mutation
+          mutation={mutation}
+          update={(cache, { data }) => {
+            const { id, content } = data[Object.keys(data)[0]];
+            const newNode = { __typename: 'Node', id, content };
+            cache.writeData({
+              data: { nodes: _.unionBy(nodes, [newNode], 'id') },
+            });
+          }}
+          onError={error => alert(error)}
+        >
+          {updateNode => {
             return (
-              <Mutation
-                mutation={mutation}
-                onCompleted={this.updateState}
-                update={(cache, { data }) => {
-                  const myData = data[Object.keys(data)[0]];
-                  myData.__typename = 'Node';
-                  cache.writeData({
-                    data: { nodes: _.unionBy(nodes, [myData], 'id') },
-                  });
-                }}
-              >
-                {updateNode => {
-                  return (
-                    <Wrapper>
-                      <Editor
-                        editorState={editorState}
-                        onChange={this.onChange}
-                        blockRenderMap={extendedBlockRenderMap}
-                        blockStyleFn={() => ''}
-                        toolbarConfig={{
-                          inline: ['BOLD', 'ITALIC', 'UNDERLINE', 'hyperlink'],
-                        }}
-                        blockButtons={[
-                          {
-                            label: 'H2',
-                            style: 'header-two',
-                            icon: 'header',
-                            description: 'Heading 2',
-                          },
-                          {
-                            label: 'H3',
-                            style: 'header-three',
-                            icon: 'header',
-                            description: 'Heading 3',
-                          },
-                          {
-                            label: (
-                              <FormatListBulleted
-                                style={{
-                                  width: 18,
-                                  height: 18,
-                                  marginBottom: -4,
-                                }}
-                              />
-                            ),
-                            style: 'unordered-list-item',
-                            icon: 'list-ul',
-                            description: 'Unordered List',
-                          },
-                          {
-                            label: (
-                              <FormatListNumbers
-                                style={{
-                                  width: 18,
-                                  height: 18,
-                                  marginBottom: -4,
-                                }}
-                              />
-                            ),
-                            style: 'ordered-list-item',
-                            icon: 'list-ol',
-                            description: 'Ordered List',
-                          },
-                          {
-                            label: (
-                              <FormatQuoteOpen
-                                style={{
-                                  width: 18,
-                                  height: 18,
-                                  marginBottom: -4,
-                                }}
-                              />
-                            ),
-                            style: 'blockquote',
-                            icon: 'quote-right',
-                            description: 'Blockquote',
-                          },
-                        ]}
-                      />
-                      <Buttons>
-                        <IconButton
-                          size="small"
-                          disabled={editorState === originalEditorState}
-                          onClick={this.handleReset}
-                          style={{ zIndex: 100 }}
-                        >
-                          <History />
-                        </IconButton>
-                        <IconButton
-                          size="small"
-                          color="secondary"
-                          disabled={editorState === originalEditorState}
-                          onClick={this.handleSave({ updateNode, client })}
-                          style={{ zIndex: 100 }}
-                        >
-                          <ContentSave />
-                        </IconButton>
-                      </Buttons>
-                    </Wrapper>
-                  );
-                }}
-              </Mutation>
+              <Wrapper>
+                <Editor
+                  editorState={editorState}
+                  onChange={this.onChange}
+                  blockRenderMap={extendedBlockRenderMap}
+                  blockStyleFn={() => ''}
+                  toolbarConfig={{
+                    inline: ['BOLD', 'ITALIC', 'UNDERLINE', 'hyperlink'],
+                  }}
+                  blockButtons={[
+                    {
+                      label: 'H2',
+                      style: 'header-two',
+                      icon: 'header',
+                      description: 'Heading 2',
+                    },
+                    {
+                      label: 'H3',
+                      style: 'header-three',
+                      icon: 'header',
+                      description: 'Heading 3',
+                    },
+                    {
+                      label: (
+                        <FormatListBulleted
+                          style={{
+                            width: 18,
+                            height: 18,
+                            marginBottom: -4,
+                          }}
+                        />
+                      ),
+                      style: 'unordered-list-item',
+                      icon: 'list-ul',
+                      description: 'Unordered List',
+                    },
+                    {
+                      label: (
+                        <FormatListNumbers
+                          style={{
+                            width: 18,
+                            height: 18,
+                            marginBottom: -4,
+                          }}
+                        />
+                      ),
+                      style: 'ordered-list-item',
+                      icon: 'list-ol',
+                      description: 'Ordered List',
+                    },
+                    {
+                      label: (
+                        <FormatQuoteOpen
+                          style={{
+                            width: 18,
+                            height: 18,
+                            marginBottom: -4,
+                          }}
+                        />
+                      ),
+                      style: 'blockquote',
+                      icon: 'quote-right',
+                      description: 'Blockquote',
+                    },
+                  ]}
+                />
+                <Buttons>
+                  <IconButton
+                    disabled={
+                      editorState.getCurrentContent() ===
+                      originalEditorState.getCurrentContent()
+                    }
+                    onClick={this.handleReset}
+                  >
+                    <History />
+                  </IconButton>
+                  <IconButton
+                    color="secondary"
+                    disabled={
+                      editorState.getCurrentContent() ===
+                      originalEditorState.getCurrentContent()
+                    }
+                    onClick={this.handleSave({ updateNode })}
+                  >
+                    <ContentSave />
+                  </IconButton>
+                </Buttons>
+              </Wrapper>
             );
           }}
-        </Query>
+        </Mutation>
       );
     }
     return (
@@ -297,4 +307,4 @@ class EditableMarkdown extends Component {
   }
 }
 
-export default EditableMarkdown;
+export default withApollo(EditableMarkdown);

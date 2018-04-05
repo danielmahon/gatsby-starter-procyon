@@ -33,7 +33,6 @@ const UPDATE_POST = gql`
   mutation($id: ID!, $content: String!) {
     updatePost(id: $id, content: $content) {
       id
-      title
       content
     }
   }

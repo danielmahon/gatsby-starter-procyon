@@ -58,7 +58,8 @@ const Wrapper = styled('div')(theme => ({
 }));
 
 class App extends Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     // Initialize NetlifyIdentity
     netlifyIdentity.init();
   }
