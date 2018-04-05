@@ -1,3 +1,7 @@
+## v0.0.11 - 2018-04-05
+
+- Updates README for npm publish, and editor fixes
+
 ## v0.0.10 - 2018-04-05
 
 - Moves netlify-identity-widget to onUpdate
