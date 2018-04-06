@@ -70,10 +70,11 @@ Navigate to [https://localhost:5000](https://localhost:5000) in your browser.
 
 This starter supports automatic versioning and CHANGELOG generation based on your git commits via [versionist](https://github.com/resin-io/versionist). Link your GitHub repo to Netlify to include automatic deployments.
 
-First, create a GitHub repo and link it to Netlify: [https://www.netlify.com/docs/continuous-deployment/](https://help.github.com/articles/create-a-repo/).
+First, create a GitHub repo and link it to Netlify:  
+[https://www.netlify.com/docs/continuous-deployment/](https://help.github.com/articles/create-a-repo/).
 
 ```sh
-# Initialize your repo and push your first release
+# Initialize your repo
 git init
 # Add all files not in .gitignore
 git add -A
@@ -81,12 +82,12 @@ git add -A
 git commit -m "Initial commit"
 # Sets your remote origin to your GitHub repo
 git remote add origin https://github.com/[username]/[repo-name].git
-# Set your local master to trach origin/master
+# Set your local master to track origin/master
 git branch -u origin/master
 # Push your first release
 npm run release:patch
 # 0.0.1 -> 0.0.2
-# You csn also increment by minor or major versions
+# You can also increment by minor or major versions
 # npm run release:minor
 # npm run release:major
 ```

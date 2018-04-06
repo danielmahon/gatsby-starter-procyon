@@ -63,7 +63,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     // Initialize NetlifyIdentity
-    netlifyIdentity.init();
+    typeof window !== 'undefined' && netlifyIdentity.init();
   }
   render() {
     const { children, data: { site } } = this.props;
