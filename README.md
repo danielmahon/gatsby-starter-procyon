@@ -10,19 +10,19 @@ Use this :poop: at your own risk...
 
 ### Features
 
-* Gatsby + ReactJS (server side rendering)
-* GraphCMS Database
-* DraftJS (in-place) Medium™-like Editing
-* Apollo GraphQL (client-side)
+* [Gatsby](https://www.gatsbyjs.org/) + [ReactJS](https://reactjs.org/) (server side rendering)
+* [GraphCMS](https://graphcms.com/) Headless CMS
+* [DraftJS](https://draftjs.org/) (in-place) [Medium](https://medium.com)-like Editing
+* [Apollo GraphQL](https://www.apollographql.com/) (client-side)
 * Local caching between builds
-* Material-UI (layout, typography, components, etc)
+* [Material-UI](https://material-ui-next.com/) (layout, typography, components, etc)
 * Styled-Components™-like API via Material-UI
-* Netlify Deployment Friendly
-* Netlify Identity Authentication (enables editing)
+* [Netlify](https://www.netlify.com/) Deployment Friendly
+* [Netlify Identity](https://www.netlify.com/docs/identity/) Authentication (enables editing)
 * Automated deploy, versioning and CHANGELOG
 * Automatic rebuilds with GraphCMS and Netlify web hooks
 * PWA (Progressive Web App)
-* Google Fonts
+* [Google Fonts](https://fonts.google.com/)
 * Trash Panda Approved\*
 
 For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
@@ -44,7 +44,7 @@ cd gatsby-starter-procyon
 
 #### Setup GraphCMS
 
-1.  Create an account at [GraphCMS](graphcms.com).
+1.  Create an account at [GraphCMS](https://graphcms.com).
 2.  Create a new project using the blog template.
 3.  Add at least one "Blog Post" to the CMS, be sure to fill out the `title`, `coverImage`, `content` and `slug`. These are required for the initial Gatsby build.
 4.  Create `.env.development` and `.env.production` in the root folder and add the following environmental variables with your token and endpoint:
@@ -60,7 +60,7 @@ Then you can run it by:
 npm start
 ```
 
-Navigate to `https://localhost:5000` in your browser.
+Navigate to [https://localhost:5000](https://localhost:5000) in your browser.
 
 ## Deploy
 
