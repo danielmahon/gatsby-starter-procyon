@@ -1,3 +1,7 @@
+## v0.0.12 - 2018-04-06
+
+- Updates readme
+
 ## v0.0.11 - 2018-04-05
 
 - Updates README for npm publish, and editor fixes
