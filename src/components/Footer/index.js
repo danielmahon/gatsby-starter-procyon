@@ -67,8 +67,6 @@ class Footer extends Component {
             &copy; 2018 {site.siteMetadata.title}
             {` | `}
             <a onClick={this.handleLogin('login')}>Login</a>
-            {` | `}
-            <a onClick={this.handleLogin('signup')}>Signup</a>
           </Caption>
         </Left>
         <Middle item xs={12} sm={2}>

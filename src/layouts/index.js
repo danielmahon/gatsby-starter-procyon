@@ -3,14 +3,6 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import netlifyIdentity from 'netlify-identity-widget';
 import { Grid } from 'material-ui';
-// Import Google Fonts
-import 'typeface-open-sans';
-import 'typeface-merriweather';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { loginUser, logoutUser } from '../utils/identityActions';
-import withRoot from '../utils/withRoot';
-import styled from '../utils/styled';
 import ApolloClient from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -18,7 +10,17 @@ import { setContext } from 'apollo-link-context';
 import { withClientState } from 'apollo-link-state';
 import { ApolloProvider } from 'react-apollo';
 import 'medium-draft/lib/index.css';
+// Import Google Fonts
+import 'typeface-merriweather';
+import 'typeface-open-sans';
+// Global styles
 import './index.css';
+// Relative imports
+import withRoot from '../utils/withRoot';
+import styled from '../utils/styled';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { loginUser, logoutUser } from '../utils/identityActions';
 
 // Create Apollo Client
 const httpLink = createHttpLink({

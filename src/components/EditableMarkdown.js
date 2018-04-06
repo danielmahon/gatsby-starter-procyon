@@ -19,6 +19,8 @@ import styled from '../utils/styled';
 import DraftTypography from './DraftTypography';
 import Button from './Button';
 
+// TODO: Clean this shit up!
+
 const Wrapper = styled('div')(theme => ({
   position: 'relative',
   '& .md-RichEditor-root': {
@@ -151,6 +153,7 @@ class EditableMarkdown extends Component {
     this.setState({ editorState });
   };
   onLogin = ({ nodes, markdown, editorState }) => user => {
+    // TODO: This is NOT right.
     if (this._calledComponentWillUnmount) return;
     this.setState({
       user,
@@ -161,6 +164,7 @@ class EditableMarkdown extends Component {
     });
   };
   onLogout = () => {
+    // TODO: This is NOT right.
     if (this._calledComponentWillUnmount) return;
     this.setState({
       user: null,

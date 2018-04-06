@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'gatsby-link';
 import Markdown from 'react-markdown';
 import Helmet from 'react-helmet';
-import styled from '../utils/styled';
 import { Typography, Grid } from 'material-ui';
+import styled from '../utils/styled';
 import Section from '../components/Section';
 
 const content = `
