@@ -4,9 +4,10 @@
 
 An opinionated Gatsby starter designed for trash-eating pandas.
 
-### Coming Soon™ (work in progress)
-
-Use this :poop: at your own risk...
+[View Demo - https://gatsby-starter-procyon.netlify.com/](https://gatsby-starter-procyon.netlify.com/)  
+Click "Login" in the footer to enable client-side editing.  
+`Email: demo@demo.com` `Password: demo`  
+_You'll get an error when trying to save changes to remote, but you get the idea..._
 
 ### Features
 
@@ -113,11 +114,8 @@ Go to a blog post page and make sure you are logged in. Click inside the main po
 **Q: Why... this?**  
 A: Well, I wanted to rebuild some small client marketing sites using the same tech I am currently using for web(native) apps, like ReactJS. Gatsby seemed cool, Netlify makes it easy, and I wanted in-place editing like Medium™. So I created a proof-of-concept and I was surprised it worked.
 
-**Q: You're an idiot and this is all wrong!**  
+**Q: You're an idiot and this is :poop:**  
 A: Thanks, and I welcome all creative criticism.
-
-**Q: This :poop: doesn't work!**  
-A: Duh. Did you see the "(work in progress)" warning at the top?
 
 **Q: What's Procyon? Why Trash Pandas?**  
 A: Look it up and because.
