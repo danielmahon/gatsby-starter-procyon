@@ -1,3 +1,7 @@
+## v0.0.17 - 2018-04-06
+
+- Fixes README typos
+
 ## v0.0.16 - 2018-04-06
 
 - Adds demo instructions
