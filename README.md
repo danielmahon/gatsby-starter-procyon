@@ -107,7 +107,7 @@ There is a "Login" link in the site footer that launches the Netlify Identity Wi
 
 #### DraftJS Client-Side CMS Editing
 
-Go to a blog post page and make sure you are logged in. Click inside the main post's content and start editing! You should see a "reset" and "save" button to the bottom-right of the content. Clicking save will use Apollo to update your GraphCMS content and if you setup webhooks between GraphCMS and Netlify it will also trigger a rebuild of your static site! In the meantime Apollo will locally cache your changes so you will continue to see your changes until your refresh the site (which clears the cache). When the rebuild is done you can refresh the page and see the updated content.
+Go to a blog post page and make sure you are logged in. Click inside the main post's content and start editing! You should see a "reset" and "save" button to the bottom-right of the content. Clicking save will use Apollo to update your GraphCMS content and if you setup web-hooks between GraphCMS and Netlify it will also trigger a rebuild of your static site! In the meantime Apollo will locally cache your changes so you will continue to see your changes until you refresh the site (which clears the cache). When the rebuild is done you can refresh the page and see the updated content.
 
 ## Questions
 
