@@ -1,3 +1,7 @@
+## v0.0.16 - 2018-04-06
+
+- Adds demo instructions
+
 ## v0.0.15 - 2018-04-06
 
 - Check for window before initializing netlifyIdentity, fixes #1
