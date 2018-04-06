@@ -1,3 +1,8 @@
+## v0.0.14 - 2018-04-06
+
+- Adds deployment instructions to README
+- Fixes problems when starting project from scratch
+
 ## v0.0.13 - 2018-04-06
 
 - Fixes README links
