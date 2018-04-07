@@ -90,7 +90,7 @@ App.propTypes = {
 export default withRoot(App);
 
 export const query = graphql`
-  query siteMetadata {
+  query GetSiteMetadata {
     site {
       siteMetadata {
         title

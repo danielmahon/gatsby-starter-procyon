@@ -41,7 +41,7 @@ const UPDATE_POST = gql`
 class Post extends Component {
   render() {
     const { data } = this.props;
-    const post = data.posts;
+    const post = data.post;
     return (
       <Section>
         <Article item xs={12} sm={8}>
@@ -77,8 +77,8 @@ class Post extends Component {
 export default Post;
 
 export const query = graphql`
-  query BlogPostQuery($slug: String!) {
-    posts(slug: { eq: $slug }) {
+  query GetPost($slug: String!) {
+    post(slug: { eq: $slug }) {
       id
       slug
       title

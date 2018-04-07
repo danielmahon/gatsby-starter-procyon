@@ -3,17 +3,17 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-const path = require('path')
-const slash = require('slash')
+const path = require('path');
+const slash = require('slash');
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+  const { createPage } = boundActionCreators;
   return new Promise((resolve, reject) => {
-    const postTemplate = path.resolve(`src/templates/post.js`)
+    const postTemplate = path.resolve(`src/templates/post.js`);
 
     graphql(`
       {
-        allPosts {
+        allPost {
           edges {
             node {
               id
@@ -29,18 +29,18 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       }
     `).then(result => {
       if (result.errors) {
-        console.log(result.errors)
+        console.log(result.errors);
       }
-      result.data.allPosts.edges.map(({ node }) => {
+      result.data.allPost.edges.map(({ node }) => {
         createPage({
           path: `/post/${node.slug}`,
           component: slash(postTemplate),
           context: {
             slug: node.slug,
           },
-        })
-      })
-      resolve()
-    })
-  })
-}
+        });
+      });
+      resolve();
+    });
+  });
+};

@@ -51,7 +51,7 @@ const IndexPage = ({ data }) => {
           comprehenderit, occaecat quae fugiat excepteur export.
         </Typography>
         <List>
-          {data.allPosts.edges.map(post => (
+          {data.allPost.edges.map(post => (
             <ListItem key={post.node.id}>
               <Link to={`/post/${post.node.slug}`}>
                 <Placeholder>
@@ -86,9 +86,9 @@ const IndexPage = ({ data }) => {
 };
 export default IndexPage;
 
-export const allPostsQuery = graphql`
-  query allPosts {
-    allPosts(sort: { fields: [dateAndTime], order: DESC }) {
+export const query = graphql`
+  query GetPosts {
+    allPost(sort: { fields: [dateAndTime], order: DESC }) {
       edges {
         node {
           id

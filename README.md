@@ -1,4 +1,4 @@
-![gatsby-starter-procyon](https://github.com/danielmahon/gatsby-starter-procyon/raw/master/static/logo.png)
+![gatsby-starter-procyon](https://github.com/danielmahon/gatsby-starter-procyon/raw/master/src/images/logo.png)
 
 # gatsby-starter-procyon
 
@@ -12,7 +12,7 @@ _You'll get an error when trying to save changes to remote, but you get the idea
 ### Features
 
 * [Gatsby](https://www.gatsbyjs.org/) + [ReactJS](https://reactjs.org/) (server side rendering)
-* [GraphCMS](https://graphcms.com/) Headless CMS
+* [GraphCMS](https://graphcms.com/) Headless CMS via [gatsby-source-graphcms](https://github.com/GraphCMS/gatsby-source-graphcms)
 * [DraftJS](https://draftjs.org/) (in-place) [Medium](https://medium.com)-like Editing
 * [Apollo GraphQL](https://www.apollographql.com/) (client-side)
 * Local caching between builds
@@ -20,7 +20,7 @@ _You'll get an error when trying to save changes to remote, but you get the idea
 * Styled-Components™-like API via Material-UI
 * [Netlify](https://www.netlify.com/) Deployment Friendly
 * [Netlify Identity](https://www.netlify.com/docs/identity/) Authentication (enables editing)
-* Automatic versioning, deployment and CHANGELOG
+* [Versionist](https://github.com/danielmahon/versionist) automated deployment and CHANGELOG (forked until [#115](https://github.com/resin-io/versionist/pull/115))
 * Automatic rebuilds with GraphCMS and Netlify web hooks
 * PWA (Progressive Web App)
 * [Google Fonts](https://fonts.google.com/)

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import { Grid, Button } from 'material-ui';
-import logoImage from '../../../static/logo.png';
+import logoImage from '../../images/logo.png';
 import styled from '../../utils/styled';
 
 const HeaderWrapper = styled(Grid, {

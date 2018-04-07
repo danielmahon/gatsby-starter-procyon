@@ -12,7 +12,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-source-graphcms`,
+      resolve: 'gatsby-source-graphcms',
       options: {
         endpoint: process.env.GATSBY_GRAPHQLCMS_ENDPOINT,
         token: process.env.GATSBY_GRAPHQLCMS_TOKEN,
@@ -40,7 +40,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         get name() {
           return module.exports.siteMetadata.title;
@@ -49,24 +49,14 @@ module.exports = {
           return module.exports.siteMetadata.shortName;
         },
         start_url: '/',
-        background_color: '#fff',
-        theme_color: '#61045f',
+        background_color: '#fafafa',
+        theme_color: '#212121',
         display: 'minimal-ui',
-        // icons: [
-        //   {
-        //     src: `/favicons/chrome-192.png`,
-        //     sizes: `192x192`,
-        //     type: `image/png`,
-        //   },
-        //   {
-        //     src: `/favicons/chrome-512.png`,
-        //     sizes: `512x512`,
-        //     type: `image/png`,
-        //   },
-        // ],
+        icon: 'src/images/icon.png',
       },
     },
-    `gatsby-plugin-offline`,
+    'gatsby-plugin-offline',
+    'gatsby-plugin-react-next',
     'gatsby-plugin-netlify',
   ],
 };
