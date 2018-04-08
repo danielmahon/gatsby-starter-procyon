@@ -1,3 +1,7 @@
+## v0.0.20 - 2018-04-08
+
+- Removes in-place editing... for now
+
 ## v0.0.19 - 2018-04-07
 
 - First live test of netlifycms
