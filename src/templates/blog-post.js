@@ -26,15 +26,6 @@ const ArticleTitle = styled('div')(theme => ({
   justifyContent: 'space-between',
 }));
 
-const UPDATE_POST = gql`
-  mutation($id: ID!, $content: String!) {
-    updatePost(id: $id, content: $content) {
-      id
-      content
-    }
-  }
-`;
-
 class Post extends Component {
   render() {
     const { data: { markdownRemark } } = this.props;
