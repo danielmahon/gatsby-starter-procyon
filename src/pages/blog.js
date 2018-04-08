@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-import Markdown from 'react-markdown';
 import styled from '../utils/styled';
 import { Typography, Grid } from 'material-ui';
 import Section from '../components/Section';

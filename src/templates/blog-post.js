@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import Markdown from 'react-markdown';
 import Link from 'gatsby-link';
 import { Grid, Typography, IconButton } from 'material-ui';
 import ArrowLeft from 'mdi-material-ui/ArrowLeft';
-import gql from 'graphql-tag';
 import styled from '../utils/styled';
 import Section from '../components/Section';
-import EditableMarkdown from '../components/EditableMarkdown';
 
 const Article = styled(Grid, { component: 'article' })(theme => ({
   padding: `${theme.spacing.unit * 2}px 0`,
