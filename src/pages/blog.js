@@ -11,12 +11,10 @@ const List = styled('ul')(theme => ({
   margin: 0,
 }));
 const ListItem = styled('li')(theme => ({
-  display: 'flex',
-  alignItems: 'center',
   padding: `${theme.spacing.unit * 2}px 0`,
   margin: 0,
   borderBottom: '1px solid #eee',
-  overflow: 'hidden',
+  listStyleType: 'none',
   '&:last-child': {
     borderBottom: 'none',
   },
@@ -40,6 +38,8 @@ const Thumbnail = styled('img')(theme => ({
 }));
 
 const IndexPage = ({ data }) => {
+  console.log(data);
+  if (!data) return null;
   return (
     <Section>
       <Grid item xs={12} sm={8}>
@@ -51,34 +51,18 @@ const IndexPage = ({ data }) => {
           comprehenderit, occaecat quae fugiat excepteur export.
         </Typography>
         <List>
-          {data.allPost.edges.map(post => (
-            <ListItem key={post.node.id}>
-              <Link to={`/post/${post.node.slug}`}>
-                <Placeholder>
-                  <Thumbnail
-                    alt={post.node.title}
-                    src={
-                      post.node.coverImage
-                        ? `https://media.graphcms.com/resize=w:100,h:100,fit:crop/${
-                            post.node.coverImage.handle
-                          }`
-                        : 'https://via.placeholder.com/100x100'
-                    }
-                  />
-                </Placeholder>
-              </Link>
-              <div>
-                <PostTitle to={`/post/${post.node.slug}`}>
-                  <Typography variant="title">{post.node.title}</Typography>
+          {data.allMarkdownRemark.edges
+            .filter(edge => edge.node.frontmatter.templateKey === 'blog-post')
+            .map(edge => (
+              <ListItem key={edge.node.id}>
+                <PostTitle to={edge.node.fields.slug}>
+                  <Typography variant="title">
+                    {edge.node.frontmatter.title}
+                  </Typography>
                 </PostTitle>
-                <Typography>
-                  Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod
-                  ubi nisi, ex ab ipsum enim quis, quo quamquam a ullamco. Ab
-                  aliquip comprehenderit, occaecat quae fugiat excepteur export.
-                </Typography>
-              </div>
-            </ListItem>
-          ))}
+                <Typography>{edge.node.excerpt}</Typography>
+              </ListItem>
+            ))}
         </List>
       </Grid>
     </Section>
@@ -86,17 +70,20 @@ const IndexPage = ({ data }) => {
 };
 export default IndexPage;
 
-export const query = graphql`
-  query GetPosts {
-    allPost(sort: { fields: [dateAndTime], order: DESC }) {
+export const pageQuery = graphql`
+  query IndexQuery {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
+          excerpt(pruneLength: 400)
           id
-          title
-          slug
-          content
-          coverImage {
-            handle
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
           }
         }
       }

@@ -36,10 +36,8 @@ const Header = ({ data: { site } }) => (
       </Link>
       <Navigation>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/services">Services</NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/blog">Blog</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
       </Navigation>
     </HeaderContent>
   </HeaderWrapper>

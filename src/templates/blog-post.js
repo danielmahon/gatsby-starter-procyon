@@ -40,33 +40,20 @@ const UPDATE_POST = gql`
 
 class Post extends Component {
   render() {
-    const { data } = this.props;
-    const post = data.post;
+    const { data: { markdownRemark } } = this.props;
     return (
       <Section>
         <Article item xs={12} sm={8}>
           <ArticleTitle>
-            <Typography variant="display1">{post.title}</Typography>
+            <Typography variant="display1">
+              {markdownRemark.frontmatter.title}
+            </Typography>
             <IconButton component={Link} to="/blog">
               <ArrowLeft />
             </IconButton>
           </ArticleTitle>
-          <Placeholder>
-            <ArticleImage
-              alt={post.title}
-              src={
-                post.coverImage
-                  ? `https://media.graphcms.com/resize=w:650,h:366,fit:crop/${
-                      post.coverImage.handle
-                    }`
-                  : 'https://via.placeholder.com/650x366'
-              }
-            />
-          </Placeholder>
-          <EditableMarkdown
-            source={post.content}
-            node={post}
-            mutation={UPDATE_POST}
+          <Typography
+            dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
           />
         </Article>
       </Section>
@@ -76,16 +63,17 @@ class Post extends Component {
 
 export default Post;
 
-export const query = graphql`
-  query GetPost($slug: String!) {
-    post(slug: { eq: $slug }) {
+export const pageQuery = graphql`
+  query BlogPostByID($id: String!) {
+    markdownRemark(id: { eq: $id }) {
       id
-      slug
-      title
-      coverImage {
-        handle
+      html
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        title
+        description
+        tags
       }
-      content
     }
   }
 `;

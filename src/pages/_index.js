@@ -2,8 +2,10 @@ import React from 'react';
 import Link from 'gatsby-link';
 import Markdown from 'react-markdown';
 import Helmet from 'react-helmet';
-import { Typography, Grid } from 'material-ui';
+import { Grid, Typography } from 'material-ui';
+import gql from 'graphql-tag';
 import styled from '../utils/styled';
+import Button from '../components/Button';
 import Section from '../components/Section';
 
 const content = `
@@ -14,15 +16,19 @@ labore ingeniis, quis vidisse ubi labore tempor, ita quem offendit probant. Aut
 illum cillum minim consequat ea legam te iis fore consequat.
 `;
 
-const Services = ({ data }) => {
+const Home = ({ data }) => {
+  console.log(data);
   return (
     <Section>
       <Grid item xs={12} sm={8}>
-        <Helmet title="Services" />
-        <Typography variant="display1">Services</Typography>
-        <Typography component={Markdown} source={content} escapeHtml={false} />
+        <Helmet title="Home" />
+        <Typography variant="display1">Home</Typography>
+        <Typography component={Markdown} source={content} />
+        <Button component={Link} to="/about" variant="stroked">
+          About Us
+        </Button>
       </Grid>
     </Section>
   );
 };
-export default Services;
+export default Home;

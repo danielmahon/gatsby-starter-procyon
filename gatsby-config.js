@@ -12,31 +12,31 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-source-graphcms',
+      resolve: 'gatsby-source-filesystem',
       options: {
-        endpoint: process.env.GATSBY_GRAPHQLCMS_ENDPOINT,
-        token: process.env.GATSBY_GRAPHQLCMS_TOKEN,
-        // Get all remote data
-        query: `{
-          allPosts {
-            id
-            slug
-            title
-            content
-            dateAndTime
-            coverImage {
-              handle
-            }
-          }
-          allAuthors {
-            id
-            name
-            bibliography
-            avatar {
-              handle
-            }
-          }
-        }`,
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/images`,
+        name: 'images',
+      },
+    },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
     {
