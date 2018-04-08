@@ -37,8 +37,6 @@ const Thumbnail = styled('img')(theme => ({
 }));
 
 const IndexPage = ({ data }) => {
-  console.log(data);
-  if (!data) return null;
   return (
     <Section>
       <Grid item xs={12} sm={8}>

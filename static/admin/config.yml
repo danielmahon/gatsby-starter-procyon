@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: master
+  branch: netlifycms
 
 media_folder: static/images/upload
 public_folder: /images/upload
