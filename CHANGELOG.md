@@ -1,3 +1,7 @@
+## v0.0.22 - 2018-04-08
+
+- Simplify for testing
+
 ## v0.0.21 - 2018-04-08
 
 - Removes forgotten gql reference

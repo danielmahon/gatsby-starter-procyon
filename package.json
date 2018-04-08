@@ -1,7 +1,7 @@
 {
   "name": "gatsby-starter-procyon",
   "description": "An opinionated Gatsby starter designed for trash-eating pandas.",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "author": "Daniel Mahon <daniel@mahonstudios.com>",
   "dependencies": {
     "apollo-cache-inmemory": "1.1.12",
