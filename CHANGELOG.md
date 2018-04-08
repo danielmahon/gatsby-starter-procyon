@@ -1,3 +1,7 @@
+## v0.0.21 - 2018-04-08
+
+- Removes forgotten gql reference
+
 ## v0.0.20 - 2018-04-08
 
 - Removes in-place editing... for now
