@@ -4,6 +4,7 @@ import { Grid, Typography, IconButton } from 'material-ui';
 import ArrowLeft from 'mdi-material-ui/ArrowLeft';
 import styled from '../utils/styled';
 import Section from '../components/Section';
+import Content from '../components/Content';
 
 const Article = styled(Grid, { component: 'article' })(theme => ({
   padding: `${theme.spacing.unit * 2}px 0`,
@@ -26,30 +27,26 @@ const ArticleTitle = styled('div')(theme => ({
   justifyContent: 'space-between',
 }));
 
-class Post extends Component {
+class BlogPost extends Component {
   render() {
-    const { data: { markdownRemark } } = this.props;
+    const { data: { markdownRemark: page }, preview } = this.props;
     return (
       <Section>
         <Article item xs={12} sm={8}>
           <ArticleTitle>
-            <Typography variant="display1">
-              {markdownRemark.frontmatter.title}
-            </Typography>
+            <Typography variant="display1">{page.frontmatter.title}</Typography>
             <IconButton component={Link} to="/blog">
               <ArrowLeft />
             </IconButton>
           </ArticleTitle>
-          <Typography
-            dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
-          />
+          <Content content={page.html} />
         </Article>
       </Section>
     );
   }
 }
 
-export default Post;
+export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {

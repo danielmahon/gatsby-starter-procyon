@@ -32,7 +32,7 @@ function withRoot(Component) {
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <div>
             <CssBaseline />
-            <Component {...this.props} />
+            <Component {...this.props} pageContext={this.pageContext} />
           </div>
         </MuiThemeProvider>
       );

@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Post from '../../templates/blog-post';
+import BlogPost from '../../templates/blog-post';
 
 const BlogPostPreview = ({ entry, widgetFor }) => {
-  console.log(entry, widgetFor);
   return (
-    <Post
-      content={widgetFor('body')}
-      description={entry.getIn(['data', 'description'])}
-      tags={entry.getIn(['data', 'tags'])}
-      title={entry.getIn(['data', 'title'])}
+    <BlogPost
+      preview
+      data={{
+        markdownRemark: {
+          html: widgetFor('body'),
+          frontmatter: { title: entry.getIn(['data', 'title']) },
+        },
+      }}
     />
   );
 };
