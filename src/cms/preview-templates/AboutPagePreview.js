@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AboutPage from '../../templates/about-page';
-import CMS from 'netlify-cms';
-import { injectStyles } from '../cms';
 
 const AboutPagePreview = ({ entry, widgetFor }) => (
   <AboutPage

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import HomePage from '../../templates/home-page';
-import CMS from 'netlify-cms';
-import { injectStyles } from '../cms';
 
+const HomePageTemplate = React.cloneElement(HomePage);
 const HomePagePreview = ({ entry, widgetFor }) => (
-  <HomePage
+  <HomePageTemplate
     preview
     data={{
       markdownRemark: {

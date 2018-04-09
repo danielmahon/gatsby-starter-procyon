@@ -26,6 +26,7 @@ function withPreviewStyles(Template) {
       CMS.registerPreviewStyle(sheets.toString(), { raw: true });
     }
     render() {
+      console.log('render admin');
       // Wraps the input component in a container, without mutating it. Good!
       return <Template {...this.props} />;
     }

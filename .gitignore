@@ -3,7 +3,6 @@
 node_modules
 yarn-error.log
 .env.*
-tags
 
 # Build directory
 /public

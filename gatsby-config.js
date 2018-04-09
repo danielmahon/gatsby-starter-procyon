@@ -10,6 +10,7 @@ module.exports = {
       'An opinionated Gatsby starter designed for trash-eating pandas.',
   },
   plugins: [
+    'gatsby-plugin-react-next',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -56,7 +57,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    'gatsby-plugin-react-next',
     'gatsby-plugin-netlify',
   ],
 };

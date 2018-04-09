@@ -4,8 +4,8 @@ import Helmet from 'react-helmet';
 import netlifyIdentity from 'netlify-identity-widget';
 import { Grid } from 'material-ui';
 // Import Google Fonts
-import 'typeface-merriweather';
 import 'typeface-open-sans';
+import 'typeface-merriweather';
 // Global styles
 import './index.css';
 // Relative imports

@@ -16,7 +16,7 @@ export default createMuiTheme({
   },
   typography: {
     fontFamily: bodyFont,
-    fontSize: 14, // default
+    // fontSize: 14, // default
     // color: grey[500],
     fontWeightLight: 300,
     fontWeightRegular: 400,

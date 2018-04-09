@@ -68,7 +68,7 @@ Navigate to [https://localhost:5000](https://localhost:5000) in your browser.
 
 ## Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danielmahon/gatsby-starter-procyon)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danielmahon/gatsby-starter-procyon#netlifycms)
 
 #### Automatic versioning, deployment and CHANGELOG
 
