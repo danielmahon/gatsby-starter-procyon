@@ -35,7 +35,7 @@ class BlogPost extends Component {
         <Article item xs={12} sm={8}>
           <ArticleTitle>
             <Typography variant="display1">{page.frontmatter.title}</Typography>
-            <IconButton component={Link} to="/blog">
+            <IconButton component={preview ? null : Link} to="/blog">
               <ArrowLeft />
             </IconButton>
           </ArticleTitle>

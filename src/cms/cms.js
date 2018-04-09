@@ -1,13 +1,18 @@
 // Your module must at least include these three imports
 import React from 'react';
 import CMS from 'netlify-cms';
-import 'netlify-cms/dist/cms.css';
 import withRoot from '../utils/withRoot';
+
+import 'netlify-cms/dist/cms.css';
+// Because index.css sits inside /src we need to skip the default
+// webpack loader and grab the file to send to registerPreviewStyle
+import globalStyles from '!file-loader!../layouts/index.css';
 
 import HomePagePreview from './preview-templates/HomePagePreview';
 import AboutPagePreview from './preview-templates/AboutPagePreview';
 import BlogPostPreview from './preview-templates/BlogPostPreview';
 
+// Inject Material-UI styles into preview iframe
 function withPreviewStyles(Template) {
   class StyledTemplate extends React.Component {
     componentDidMount() {
@@ -28,10 +33,7 @@ function withPreviewStyles(Template) {
   return withRoot(StyledTemplate);
 }
 
-// CMS.registerPreviewStyle('.frame-content > div { padding: 20px; }', {
-//   raw: true,
-// });
-
+CMS.registerPreviewStyle(globalStyles);
 CMS.registerPreviewTemplate('home', withPreviewStyles(HomePagePreview));
 CMS.registerPreviewTemplate('about', withPreviewStyles(AboutPagePreview));
 CMS.registerPreviewTemplate('blog', withPreviewStyles(BlogPostPreview));
