@@ -1,3 +1,14 @@
+## v0.0.24 - 2018-04-10
+
+- Removes extra image
+- Update Blog “this-is-my-second-blog-post”
+- Update Blog “this-is-my-second-blog-post”
+- Update Blog “this-is-my-second-blog-post”
+- Update Blog “this-is-my-first-blog-post”
+- Upload /static/uploads/earth-608366-unsplash.jpg
+- Update Blog “this-is-my-first-blog-post”
+- Update Blog “this-is-my-second-blog-post”
+
 ## v0.0.23 - 2018-04-10
 
 - Cleanup, adds gatsby-remark-relative-images, etc
