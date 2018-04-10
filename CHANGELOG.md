@@ -1,3 +1,7 @@
+## v0.0.19 - 2018-04-10
+
+- Uses scoped versionist-plugins and adds note about netlifycms branch to README
+
 ## v0.0.18 - 2018-04-07
 
 - Adds images to src folder, uses gatsby-plugin-manifest automatic mode, updates gatsby-source-graphcms to 1.0 alpha and updates all queries to support, adds React 16.3 support, housekeeping
