@@ -1,3 +1,9 @@
+## v0.0.27 - 2018-04-10
+
+- Use scoped npm @danielmahon/versionist-plugins instead of github
+- Update lock file
+- Uses my fork of versionist-plugins
+
 ## v0.0.26 - 2018-04-10
 
 - Bump
