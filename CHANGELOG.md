@@ -1,3 +1,22 @@
+## v0.0.23 - 2018-04-10
+
+- Cleanup, adds gatsby-remark-relative-images, etc
+- Lots o fixes, fixes content flashing
+- Update Blog “this-is-my-second-blog-post”
+- Update Blog “this-is-my-first-blog-post”
+- More admin style changes, change uploads folder
+- Create Blog “this-is-my-second-blog-post”
+- Create Blog “this-is-my-first-blog-post”
+- Delete Blog “2016-12-17-making-sense-of-the-scaas-new-flavor-wheel”
+- Delete Blog “2017-01-04-just-in-small-batch-of-jamaican-blue-mountain-in-store-next-week”
+- Delete Blog “2017-01-04-a-beginners-guide-to-brewing-with-chemex”
+- Update Blog “2017-01-04-a-beginners-guide-to-brewing-with-chemex”
+- Adds Typography to admin previews
+- Adds Typography to admin previews
+- Upload /static/images/upload/katerina-radvanska-418560-unsplash.jpg
+- Update Pages “about”
+- Update Pages “about”
+
 ## v0.0.22 - 2018-04-08
 
 - Simplify for testing
