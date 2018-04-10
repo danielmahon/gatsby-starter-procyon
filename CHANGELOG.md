@@ -1,3 +1,7 @@
+## v0.0.28 - 2018-04-10
+
+- Dont tag commits on branch netlifycms
+
 ## v0.0.27 - 2018-04-10
 
 - Use scoped npm @danielmahon/versionist-plugins instead of github
