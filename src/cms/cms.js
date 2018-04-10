@@ -3,7 +3,7 @@ import React from 'react';
 import CMS from 'netlify-cms';
 import withRoot from '../utils/withRoot';
 
-import 'netlify-cms/dist/cms.css';
+// import 'netlify-cms/dist/cms.css';
 // Because index.css sits inside /src we need to skip the default
 // webpack loader and grab the file to send to registerPreviewStyle
 import globalStyles from '!file-loader!../layouts/index.css';
@@ -26,7 +26,6 @@ function withPreviewStyles(Template) {
       CMS.registerPreviewStyle(sheets.toString(), { raw: true });
     }
     render() {
-      console.log('render admin');
       // Wraps the input component in a container, without mutating it. Good!
       return <Template {...this.props} />;
     }

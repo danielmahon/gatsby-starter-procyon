@@ -30,7 +30,6 @@ const ArticleTitle = styled('div')(theme => ({
 class BlogPost extends Component {
   render() {
     const { data: { markdownRemark: page }, preview } = this.props;
-    console.log(page.html);
     return (
       <Section>
         <Article item xs={12} sm={8}>

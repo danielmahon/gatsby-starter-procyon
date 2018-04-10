@@ -26,12 +26,34 @@ module.exports = {
         name: 'images',
       },
     },
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/static/uploads`,
+        name: 'uploads',
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: [],
+        plugins: [
+          {
+            resolve: 'gatsby-remark-relative-images',
+            options: {
+              name: 'uploads',
+            },
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 720,
+            },
+          },
+        ],
       },
     },
     {
@@ -56,6 +78,7 @@ module.exports = {
         icon: 'src/images/icon.png',
       },
     },
+    'gatsby-plugin-sharp',
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
   ],
