@@ -8,14 +8,11 @@ description: >-
 tags:
   - blog
 ---
-
 ![Racoons](/uploads/fat_racoon.jpg)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac malesuada sapien, quis efficitur sapien. Mauris dapibus lacinia tempor. Mauris in neque ipsum. Nulla in viverra lorem. Vivamus convallis egestas facilisis. Nam a quam sed nisi interdum sagittis. Vivamus gravida, eros venenatis dapibus interdum, arcu ipsum fermentum velit, ut laoreet odio felis eu lectus. Aliquam erat volutpat. Praesent pretium feugiat nibh, sodales sodales magna pellentesque eu. Integer scelerisque ullamcorper libero non molestie.
 
 ## Heading H2
-
-<img src="/uploads/racoons.jpg" alt="Racoons"/>
 
 Cras finibus ligula non euismod malesuada. In facilisis ipsum sed ex tempus, google.com sed maximus ante euismod. Vivamus dignissim iaculis nisi eu tincidunt. Quisque convallis fermentum mauris.
 
