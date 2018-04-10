@@ -1,3 +1,9 @@
+## v0.0.20 - 2018-04-10
+
+- Bump tag to keep up with netlifycms branch, probably a better way to do this
+- V0.0.19
+- Uses scoped versionist-plugins and adds note about netlifycms branch to README
+
 ## v0.0.19 - 2018-04-10
 
 - Uses scoped versionist-plugins and adds note about netlifycms branch to README
