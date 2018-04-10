@@ -15,6 +15,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac malesuada s
 
 ## Heading H2
 
+<img src="/uploads/racoons.jpg" alt="Racoons"/>
+
 Cras finibus ligula non euismod malesuada. In facilisis ipsum sed ex tempus, google.com sed maximus ante euismod. Vivamus dignissim iaculis nisi eu tincidunt. Quisque convallis fermentum mauris.
 
 * Item Number One
