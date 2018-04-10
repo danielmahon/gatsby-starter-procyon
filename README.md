@@ -9,6 +9,9 @@ Click "Login" in the footer to enable client-side editing.
 `Email: demo@demo.com` `Password: demo`  
 _You'll get an error when trying to save changes to remote, but you get the idea..._
 
+View the [NetlifyCMS](https://www.netlifycms.org/) version on the `netlifycms` branch:
+[https://github.com/danielmahon/gatsby-starter-procyon/tree/netlifycms](https://github.com/danielmahon/gatsby-starter-procyon/tree/netlifycms)
+
 ### Features
 
 * [Gatsby](https://www.gatsbyjs.org/) + [ReactJS](https://reactjs.org/) (server side rendering)
