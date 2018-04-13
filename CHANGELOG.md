@@ -1,3 +1,7 @@
+## v0.0.21 - 2018-04-13
+
+- Updates README
+
 ## v0.0.20 - 2018-04-10
 
 - Bump tag to keep up with netlifycms branch, probably a better way to do this
