@@ -11,6 +11,9 @@ Click "Login" in the footer to enable client-side editing.
 `Email: demo@demo.com` `Password: demo`  
 _You'll get an error when trying to save changes to remote, but you get the idea..._~~
 
+> View the [GraphCMS](https://graphcms.com/) version on the `master` branch:  
+> [https://github.com/danielmahon/gatsby-starter-procyon](https://github.com/danielmahon/gatsby-starter-procyon)
+
 ### Features
 
 * [Gatsby](https://www.gatsbyjs.org/) + [ReactJS](https://reactjs.org/) (server side rendering)
@@ -28,6 +31,15 @@ _You'll get an error when trying to save changes to remote, but you get the idea
 * PWA (Progressive Web App)
 * [Google Fonts](https://fonts.google.com/)
 * Trash Panda Approved\*
+
+### Coming Soon™
+
+* [ ] Enhanced `styled` API supporting `React.forwardRef` and `props`
+* [ ] Dynamic page and section creation
+* [ ] Example on how to use Markdown AST to render components
+* [ ] Transactional emails
+* [ ] Contact form and message management
+* [ ] Links to sites that used `gatsby-starter-procyon`
 
 For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
 
